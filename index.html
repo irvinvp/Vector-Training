@@ -145,12 +145,17 @@
                 })
                 .then((res) => res.json())
                 .then((response) => {
-                  document.getElementById("table_list").innerHTML =
-                    "<h4>Alerta enviada " +
-                    new Date().toLocaleString() +
-                    " " +
-                    serial +
-                    "</h4>";
+                  if (response.status == 200) {
+                    document.getElementById("table_list").innerHTML =
+                      "<h4>Alerta enviada " +
+                      new Date().toLocaleString() +
+                      " " +
+                      serial +
+                      "</h4>";
+                  } else {
+                    document.getElementById("table_list").innerHTML =
+                      "<h4>Error en serial/commano</h4>";
+                  }
                   return;
                 });
             } else {
